@@ -21,8 +21,8 @@ services:
     environment:
       - CHOKIDAR_USEPOLLING=true
     restart: unless-stopped
-    # ==============================
-  # 1. MySQL (데이터베이스)
+  # ==============================
+  # MySQL (데이터베이스)
   # ==============================
   mysql-db:
     image: mysql:8.0
@@ -41,7 +41,7 @@ services:
     restart: always
 
   # ==============================
-  # 2. Backend (Spring Boot)
+  # Backend (Spring Boot)
   # ==============================
   backend:
     build:
