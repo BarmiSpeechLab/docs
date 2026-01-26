@@ -66,3 +66,21 @@ services:
     depends_on:
       - mysql-db # DB가 먼저 켜져야 함
     restart: on-failure
+
+# ==============================
+# RabbitMQ (메시지 브로커)
+# ==============================
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: barmi-rabbitmq
+    ports:
+      - "5672:5672"    # AMQP
+      - "15672:15672"  # Management UI
+    volumes:
+      - ./infra/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./infra/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
