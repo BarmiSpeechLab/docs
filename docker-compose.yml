@@ -67,6 +67,24 @@ services:
       - mysql-db # DB가 먼저 켜져야 함
     restart: on-failure
 
+  # ==============================
+  # WebRTC (OpenVidu)
+  # ==============================
+  openvidu-server-kms:
+    image: openvidu/openvidu-server-kms:latest
+    container_name: OpenVidu_WebRTC
+    restart: always
+    ports:
+      - "4443:4443" # 대시보드 및 API 포트
+      - "4000:4000" # (선택) 로컬 테스트용 포트
+    environment:
+      # 1. 내 IP 설정 (로컬이므로)
+      - DOMAIN_OR_PUBLIC_IP=${DOMAIN_OR_PUBLIC_IP}
+      # 2. OpenVidu 비밀번호 설정
+      - OPENVIDU_SECRET=${OPENVIDU_SECRET}
+      # 3. 기타 설정
+      - CERTIFICATE_TYPE=selfsigned
+      
 # ==============================
 # RabbitMQ (메시지 브로커)
 # ==============================
