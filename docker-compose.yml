@@ -5,10 +5,14 @@ services:
     container_name: FastAPI_AI_Gateway
     ports:
       - "8000:8000"
+    volumes:
+      - audio_data:/shared/audio
     environment:
       AI_BASE_URL: ${AI_BASE_URL}
       AI_TIMEOUT_SEC: ${AI_TIMEOUT_SEC}
       WORKER_URLS: ""
+    depends_on:
+      - rabbitmq
     restart: unless-stopped
 
   frontend:
@@ -56,6 +60,8 @@ services:
       - "8080:8080" # 로컬호스트:8080으로 API 호출 가능
     env_file:
       - .env # DB 접속 정보 공유
+    volumes:
+      - audio_data:/shared/audio
     environment:
       # 로컬 도커 내부에서는 'localhost' 대신 서비스명('mysql-db')을 써야 함
       # .env에 있는 DB_URL을 덮어쓰거나, .env 자체를 수정해서 사용
@@ -105,3 +111,6 @@ services:
       interval: 10s
       timeout: 5s
       retries: 10
+
+volumes:
+  audio_data:
