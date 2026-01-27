@@ -77,7 +77,7 @@ services:
   # WebRTC (OpenVidu)
   # ==============================
   openvidu-server-kms:
-    image: openvidu/openvidu-server-kms:latest
+    image: openvidu/openvidu-server-kms:2.30.0
     container_name: OpenVidu_WebRTC
     restart: always
     ports:
