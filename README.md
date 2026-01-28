@@ -7,6 +7,9 @@
 - [[WebRTC] OpenVidu 설계](https://www.notion.so/WebRTC-OpenVidu-2f4fc74069a68086a278f420bd0d8a55?source=copy_link)
 
 
+## 📑 기술개발문서
+- [학습 커리큘럼 설계](https://www.notion.so/2f4fc74069a680a586bfcf2cdac6da38?source=copy_link)
+
 ## 👥 협업 컨벤션 
 ### 📄 Git 협업
 - [브랜치 → 커밋/PR WorkFlow](https://www.notion.so/PR-WorkFlow-2eafc74069a680c88429c9052440d470?source=copy_link)
