@@ -1,15 +1,15 @@
 services:
-  # ai-gateway:
-  #   build:
-  #     context: ./ai-gateway
-  #   container_name: FastAPI_AI_Gateway
-  #   ports:
-  #     - "8000:8000"
-  #   environment:
-  #     AI_BASE_URL: ${AI_BASE_URL}
-  #     AI_TIMEOUT_SEC: ${AI_TIMEOUT_SEC}
-  #     WORKER_URLS: ""
-  #   restart: unless-stopped
+  ai-gateway:
+    build:
+      context: ./ai-gateway
+    container_name: FastAPI_AI_Gateway
+    ports:
+      - "8000:8000"
+    environment:
+      AI_BASE_URL: ${AI_BASE_URL}
+      AI_TIMEOUT_SEC: ${AI_TIMEOUT_SEC}
+      WORKER_URLS: ""
+    restart: unless-stopped
 
   frontend:
     build:
@@ -56,6 +56,8 @@ services:
       - "8080:8080" # 로컬호스트:8080으로 API 호출 가능
     env_file:
       - .env # DB 접속 정보 공유
+    volumes:
+      - audio_data:/shared/audio
     environment:
       # 로컬 도커 내부에서는 'localhost' 대신 서비스명('mysql-db')을 써야 함
       # .env에 있는 DB_URL을 덮어쓰거나, .env 자체를 수정해서 사용
@@ -81,6 +83,24 @@ services:
     depends_on:
       - mysql-db # DB가 먼저 켜져야 함
     restart: on-failure
+
+# ==============================
+# WebRTC (OpenVidu)
+# ==============================
+openvidu-server-kms:
+  image: openvidu/openvidu-server-kms:2.30.0
+  container_name: OpenVidu_WebRTC
+  restart: always
+  ports:
+    - "4443:4443" # 대시보드 및 API 포트
+    - "4000:4000" # (선택) 로컬 테스트용 포트
+  environment:
+    # 1. 내 IP 설정 (로컬이므로)
+    - DOMAIN_OR_PUBLIC_IP=${DOMAIN_OR_PUBLIC_IP}
+    # 2. OpenVidu 비밀번호 설정
+    - OPENVIDU_SECRET=${OPENVIDU_SECRET}
+    # 3. 기타 설정
+    - CERTIFICATE_TYPE=selfsigned
 
 # ==============================
 # RabbitMQ (메시지 브로커)
