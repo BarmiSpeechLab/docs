@@ -5,10 +5,21 @@ services:
     container_name: FastAPI_AI_Gateway
     ports:
       - "8000:8000"
+    volumes:
+      - audio_data:/shared/audio
     environment:
       AI_BASE_URL: ${AI_BASE_URL}
       AI_TIMEOUT_SEC: ${AI_TIMEOUT_SEC}
       WORKER_URLS: ""
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+      RABBITMQ_QUEUE: ai.jobs
+      RABBITMQ_RESULT_QUEUE: ai.results
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
     restart: unless-stopped
 
   frontend:
@@ -123,3 +134,7 @@ openvidu-server-kms:
       interval: 10s
       timeout: 5s
       retries: 10
+
+
+volumes:
+  audio_data:
