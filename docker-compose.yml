@@ -22,12 +22,12 @@ services:
 
   frontend:
     build:
-      context: ./frontend/frontend
+      context: ./frontend
     container_name: React_Frontend
     ports:
       - "3000:3000"
     volumes:
-      - ./frontend/frontend:/app
+      - ./frontend:/app
       - /app/node_modules
     environment:
       - CHOKIDAR_USEPOLLING=true
