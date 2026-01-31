@@ -80,6 +80,7 @@ services:
       SPRING_RABBITMQ_USERNAME: ${RABBITMQ_USER}
       SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASS}
       SPRING_RABBITMQ_VIRTUAL_HOST: "/barmi"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
 
       TZ: Asia/Seoul
       FILE_UPLOAD_DIR: /shared/audio
@@ -106,15 +107,15 @@ services:
       # 3. 기타 설정
       - CERTIFICATE_TYPE=selfsigned
 
-# ==============================
-# RabbitMQ (메시지 브로커)
-# ==============================
+  # ==============================
+  # RabbitMQ (메시지 브로커)
+  # ==============================
   rabbitmq:
     image: rabbitmq:3.13-management
     container_name: barmi-rabbitmq
     ports:
-      - "5672:5672"    # AMQP
-      - "15672:15672"  # Management UI
+      - "5672:5672" # AMQP
+      - "15672:15672" # Management UI
     environment:
       RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
       RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
@@ -122,14 +123,14 @@ services:
       - ./infra/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
       - ./infra/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
     healthcheck:
-      test: ["CMD", "rabbitmq-diagnostics", "check_running"]
+      test: [ "CMD", "rabbitmq-diagnostics", "check_running" ]
       interval: 10s
       timeout: 5s
       retries: 10
 
-# ==============================
-# Nginx
-# ==============================
+  # ==============================
+  # Nginx
+  # ==============================
   nginx:
     image: nginx:alpine
     container_name: Nginx
