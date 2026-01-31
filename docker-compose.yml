@@ -74,9 +74,16 @@ services:
       SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/barmi_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
       SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
       SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+
+      SPRING_RABBITMQ_HOST: barmi-rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_USER}
+      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASS}
+      SPRING_RABBITMQ_VIRTUAL_HOST: "/barmi"
+
       TZ: Asia/Seoul
       FILE_UPLOAD_DIR: /shared/audio
-      OPENVIDU_URL: http://127.0.0.1:4443/
+      OPENVIDU_URL: http://openvidu-dev:4443/ # http://127.0.0.1:4443/
     depends_on:
       - mysql-db # DB가 먼저 켜져야 함
     restart: on-failure
@@ -98,7 +105,7 @@ services:
       - OPENVIDU_SECRET=${OPENVIDU_SECRET}
       # 3. 기타 설정
       - CERTIFICATE_TYPE=selfsigned
-      
+
 # ==============================
 # RabbitMQ (메시지 브로커)
 # ==============================
