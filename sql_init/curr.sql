@@ -10,7 +10,7 @@ CREATE TABLE IF NOT EXISTS curriculum (
 ) DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 
-INSERT IGNORE INTO curriculum (curriculum_id, type, theme, text, meaning, ipa, kor_pronunciation, analysis_data) VALUES
+INSERT INTO curriculum (curriculum_id, type, theme, text, meaning, ipa, kor_pronunciation, analysis_data) VALUES
 -- 1. IPA 섹션 (1~40)
 (1, 'ipa', 'ipa', '{"word": "ɑ", "examples": [{"ex_text": "Father", "ex_mean": "아버지"}, {"ex_text": "Hot", "ex_mean": "뜨거운"}]}', 'AA (vowel)', '/ɑ/', '아-', '{}'),
 (2, 'ipa', 'ipa', '{"word": "æ", "examples": [{"ex_text": "Apple", "ex_mean": "사과"}, {"ex_text": "Cat", "ex_mean": "고양이"}]}', 'AE (vowel)', '/æ/', '애', '{}'),
