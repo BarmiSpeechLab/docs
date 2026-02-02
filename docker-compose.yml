@@ -48,6 +48,7 @@ services:
       TZ: Asia/Seoul # 시간대 한국으로 설정
     volumes:
       - ./db_data:/var/lib/mysql # DB 데이터를 내 폴더(db_data)에 저장 (컨테이너 꺼져도 데이터 유지)
+      - ./docs/sql_init:/docker-entrypoint-initdb.d:ro
     command:
       # 한글 깨짐 방지 설정
       - --character-set-server=utf8mb4
