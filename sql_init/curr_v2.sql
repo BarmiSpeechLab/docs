@@ -1,3 +1,5 @@
+SET NAMES utf8mb4;
+
 CREATE TABLE IF NOT EXISTS curriculum (
     curriculum_id INT PRIMARY KEY,          
     type VARCHAR(50) NOT NULL,
