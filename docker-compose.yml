@@ -82,7 +82,8 @@ services:
       SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASS}
       SPRING_RABBITMQ_VIRTUAL_HOST: "/barmi"
       SPRING_JPA_HIBERNATE_DDL_AUTO: update
-
+      OPENAI_API_KEY: ${GMS_KEY}
+      OPENAI_API_URL: https://gms.ssafy.io/gmsapi/api.openai.com/v1/chat/completions
       TZ: Asia/Seoul
       FILE_UPLOAD_DIR: /shared/audio
       OPENVIDU_URL: ${OPENVIDU_URL}
@@ -99,13 +100,17 @@ services:
     image: kurento/kurento-media-server:7.0.1
     container_name: Kurento_Media_Server
     restart: always
-    expose:
-      - "8888"
+    ports:
+     - "8888:8888/tcp"
+     - "40000-40100:40000-40100/udp"
     environment:
       - GST_DEBUG=2
       - KMS_MIN_PORT=40000
-      - KMS_MAX_PORT=57000
-
+      - KMS_MAX_PORT=40100
+      - KMS_EXTERNAL_ADDRESS=${KMS_EXTERNAL_ADDRESS} # ASW EC2 퍼블릭 IPv4주소
+    volumes:
+      # 재시작해도 설정 유지
+      - ./infra/kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
   # ==============================
   # OpenVidu Server (시그널링)
   # ==============================
@@ -113,17 +118,18 @@ services:
     image: openvidu/openvidu-server:2.30.0
     container_name: OpenVidu_WebRTC
     restart: always
-    expose:
-      - "5443"
+    ports:
+      - "5442:5443"
     environment:
       - OPENVIDU_SECRET=${OPENVIDU_SECRET}
-      - OPENVIDU_PUBLICURL=https://${DOMAIN_OR_PUBLIC_IP}:5443
-      - DOMAIN_OR_PUBLIC_IP=${DOMAIN_OR_PUBLIC_IP}
+      - OPENVIDU_PUBLICURL=https://${DOMAIN_NAME}:5443
+      - DOMAIN_OR_PUBLIC_IP=${DOMAIN_NAME}
       - HTTPS_PORT=5443
       - HTTP_PORT=-1
       - OPENVIDU_RECORDING=false
       - OPENVIDU_RECORDING_PUBLIC_ACCESS=false
       - KMS_URIS=["ws://kms:8888/kurento"]
+      - OPENVIDU_WEBRTC_ICE_SERVERS=[]
     depends_on:
       - kms
 
