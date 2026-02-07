@@ -108,6 +108,9 @@ services:
       - KMS_MIN_PORT=40000
       - KMS_MAX_PORT=40100
       - KMS_EXTERNAL_ADDRESS=${KMS_EXTERNAL_ADDRESS} # ASW EC2 퍼블릭 IPv4주소
+    volumes:
+      # 재시작해도 설정 유지
+      - ./infra/kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
   # ==============================
   # OpenVidu Server (시그널링)
   # ==============================
