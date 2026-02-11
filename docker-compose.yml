@@ -1,0 +1,204 @@
+services:
+  ai-gateway:
+    build:
+      context: ./ai-gateway
+    container_name: FastAPI_AI_Gateway
+    expose:
+      - "8000"
+    volumes:
+      - audio_data:/shared/audio
+    environment:
+      AI_BASE_URL: ${AI_BASE_URL}
+      AI_TIMEOUT_SEC: ${AI_TIMEOUT_SEC}
+      WORKER_URLS: ""
+      RABBITMQ_HOST: ${RABBITMQ_HOST}
+      RABBITMQ_PORT: 5672
+      RABBITMQ_USER: ${RABBITMQ_USER}
+      RABBITMQ_PASS: ${RABBITMQ_PASS}
+      RABBITMQ_HEARTBEAT_SEC: 30
+      RABBITMQ_BLOCKED_CONNECTION_TIMEOUT_SEC: 60
+      RABBITMQ_CONNECTION_ATTEMPTS: 5
+      RABBITMQ_RETRY_DELAY_SEC: 3
+      RABBITMQ_SOCKET_TIMEOUT_SEC: 10
+      RABBITMQ_RECONNECT_INITIAL_DELAY_SEC: 1
+      RABBITMQ_RECONNECT_MAX_DELAY_SEC: 30
+    depends_on:
+      rabbitmq:
+        condition: service_healthy
+    restart: unless-stopped
+
+  frontend:
+    build:
+      context: ./frontend
+    container_name: React_Frontend
+    command: npm run dev -- --host 0.0.0.0 --port 3000
+    expose:
+      - "3000"
+    volumes:
+      - ./frontend:/app
+      - /app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=true
+    restart: unless-stopped
+
+  # ==============================
+  # MySQL (데이터베이스)
+  # ==============================
+  mysql-db:
+    image: mysql:8.0
+    container_name: Barmi_MySQL
+    expose:
+      - "3306" # 로컬 DB 관리 툴(DBeaver 등)에서 접속 가능하게 노출
+    env_file:
+      - .env # .env 파일에서 비번 등 가져옴
+    environment:
+      TZ: Asia/Seoul # 시간대 한국으로 설정
+    volumes:
+      - ./db_data:/var/lib/mysql # DB 데이터를 내 폴더(db_data)에 저장 (컨테이너 꺼져도 데이터 유지)
+      - ./docs/sql_init:/docker-entrypoint-initdb.d:ro
+    command:
+      # 한글 깨짐 방지 설정
+      - --character-set-server=utf8mb4
+      - --collation-server=utf8mb4_unicode_ci
+    restart: always
+
+  # ==============================
+  # Backend (Spring Boot)
+  # ==============================
+  backend:
+    build:
+      context: ./backend
+      dockerfile: Dockerfile
+    container_name: Spring_Backend
+    expose:
+      - "8080" # 로컬호스트:8080으로 API 호출 가능
+    env_file:
+      - .env # DB 접속 정보 공유
+    volumes:
+      - audio_data:/shared/audio
+    environment:
+      # 로컬 도커 내부에서는 'localhost' 대신 서비스명('mysql-db')을 써야 함
+      # .env에 있는 DB_URL을 덮어쓰거나, .env 자체를 수정해서 사용
+      SPRING_DATASOURCE_URL: jdbc:mysql://mysql-db:3306/barmi_db?serverTimezone=Asia/Seoul&characterEncoding=UTF-8&useSSL=false&allowPublicKeyRetrieval=true
+      SPRING_DATASOURCE_USERNAME: ${MYSQL_USER}
+      SPRING_DATASOURCE_PASSWORD: ${MYSQL_PASSWORD}
+
+      SPRING_RABBITMQ_HOST: barmi-rabbitmq
+      SPRING_RABBITMQ_PORT: 5672
+      SPRING_RABBITMQ_USERNAME: ${RABBITMQ_USER}
+      SPRING_RABBITMQ_PASSWORD: ${RABBITMQ_PASS}
+      SPRING_RABBITMQ_VIRTUAL_HOST: "/barmi"
+      SPRING_RABBITMQ_REQUESTED_HEARTBEAT: 30s
+      SPRING_RABBITMQ_CONNECTION_TIMEOUT: 5s
+      SPRING_RABBITMQ_LISTENER_SIMPLE_MISSING_QUEUES_FATAL: "false"
+      SPRING_JPA_HIBERNATE_DDL_AUTO: update
+      OPENAI_API_KEY: ${GMS_KEY}
+      OPENAI_API_URL: https://gms.ssafy.io/gmsapi/api.openai.com/v1/chat/completions
+      TZ: Asia/Seoul
+      FILE_UPLOAD_DIR: /shared/audio
+      OPENVIDU_URL: ${OPENVIDU_URL}
+      OPENVIDU_SECRET: ${OPENVIDU_SECRET}
+    depends_on:
+      - mysql-db
+      - openvidu-dev
+    restart: on-failure
+
+  # ==============================
+  # Kurento Media Server (미디어 처리)
+  # ==============================
+  kms:
+    image: kurento/kurento-media-server:7.0.1
+    container_name: Kurento_Media_Server
+    restart: always
+    ports:
+      - "8888:8888/tcp"
+      - "40000-40100:40000-40100/udp"
+    environment:
+      - GST_DEBUG=2
+      - KMS_MIN_PORT=40000
+      - KMS_MAX_PORT=40100
+      - KMS_EXTERNAL_ADDRESS=${KMS_EXTERNAL_ADDRESS} # ASW EC2 퍼블릭 IPv4주소
+    volumes:
+      # 재시작해도 설정 유지
+      - ./infra/kurento/WebRtcEndpoint.conf.ini:/etc/kurento/modules/kurento/WebRtcEndpoint.conf.ini
+  # ==============================
+  # OpenVidu Server (시그널링)
+  # ==============================
+  openvidu-dev:
+    image: openvidu/openvidu-server:2.30.0
+    container_name: OpenVidu_WebRTC
+    restart: always
+    ports:
+      - "5442:5443"
+    environment:
+      - OPENVIDU_SECRET=${OPENVIDU_SECRET}
+      - OPENVIDU_PUBLICURL=https://${DOMAIN_NAME}:5443
+      - DOMAIN_OR_PUBLIC_IP=${DOMAIN_NAME}
+      - HTTPS_PORT=5443
+      - HTTP_PORT=-1
+      - OPENVIDU_RECORDING=false
+      - OPENVIDU_RECORDING_PUBLIC_ACCESS=false
+      - KMS_URIS=["ws://kms:8888/kurento"]
+      - OPENVIDU_WEBRTC_ICE_SERVERS=[]
+    depends_on:
+      - kms
+
+  # ==============================
+  # RabbitMQ (메시지 브로커)
+  # ==============================
+  rabbitmq:
+    image: rabbitmq:3.13-management
+    container_name: barmi-rabbitmq
+    expose:
+      - "5672" # AMQP
+      - "15672" # Management UI
+    environment:
+      RABBITMQ_DEFAULT_USER: ${RABBITMQ_USER}
+      RABBITMQ_DEFAULT_PASS: ${RABBITMQ_PASS}
+    volumes:
+      - ./infra/rabbitmq/rabbitmq.conf:/etc/rabbitmq/rabbitmq.conf:ro
+      - ./infra/rabbitmq/definitions.json:/etc/rabbitmq/definitions.json:ro
+    healthcheck:
+      test: [ "CMD", "rabbitmq-diagnostics", "check_running" ]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # ==============================
+  # Nginx
+  # ==============================
+  nginx:
+    image: nginx:alpine
+    container_name: Nginx
+    ports:
+      - "80:80"
+      - "443:443"
+      - "5443:5443"
+    volumes:
+      - ./infra/nginx/nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./infra/nginx/conf.d:/etc/nginx/conf.d:ro
+
+      # Certbot과 공유할 볼륨들
+      - ./data/certbot/conf:/etc/letsencrypt # 실제 인증서 저장소
+      - ./data/certbot/www:/var/www/certbot # 인증을 위한 임시 파일 경로
+    depends_on:
+      - frontend
+      - backend
+    restart: unless-stopped
+
+  # ==============================
+  # Certbot (인증서 발급 및 갱신)
+  # ==============================
+  certbot:
+    image: certbot/certbot
+    container_name: Certbot
+    volumes:
+      - ./data/certbot/conf:/etc/letsencrypt
+      - ./data/certbot/www:/var/www/certbot
+    # 12시간마다 자동으로 인증서 갱신 시도
+    entrypoint: "/bin/sh -c 'trap exit TERM; while :; do certbot renew; sleep 12h & wait $${!}; done;'"
+    depends_on:
+      - nginx
+
+volumes:
+  audio_data:

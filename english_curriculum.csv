@@ -1,0 +1,141 @@
+﻿curr,theme,type,text,korPronunciation,ipa,meaning
+ipa,ipa,ipa,ɑ,아-,/ɑ/,AA (vowel)
+ipa,ipa,ipa,æ,애,/æ/,AE (vowel)
+ipa,ipa,ipa,ʌ,어,/ʌ/,AH (vowel)
+ipa,ipa,ipa,ɔ,오-,/ɔ/,AO (vowel)
+ipa,ipa,ipa,aʊ,아우-,/aʊ/,AW (vowel)
+ipa,ipa,ipa,ə,어,/ə/,AX (vowel)
+ipa,ipa,ipa,aɪ,아이-,/aɪ/,AY (vowel)
+ipa,ipa,ipa,b,브,/b/,B (stop)
+ipa,ipa,ipa,tʃ,치,/tʃ/,CH (affricate)
+ipa,ipa,ipa,d,드,/d/,D (stop)
+ipa,ipa,ipa,ð,드,/ð/,DH (fricative)
+ipa,ipa,ipa,ɛ,에,/ɛ/,EH (vowel)
+ipa,ipa,ipa,ɝ,얼-,/ɝ/,ER (vowel)
+ipa,ipa,ipa,eɪ,에이-,/eɪ/,EY (vowel)
+ipa,ipa,ipa,f,ㅍ,/f/,F (fricative)
+ipa,ipa,ipa,g,그,/g/,G (stop)
+ipa,ipa,ipa,h,ㅎ,/h/,HH (aspirate)
+ipa,ipa,ipa,ɪ,이,/ɪ/,IH (vowel)
+ipa,ipa,ipa,i,이-,/i/,IY (vowel)
+ipa,ipa,ipa,dʒ,지,/dʒ/,JH (affricate)
+ipa,ipa,ipa,k,ㅋ,/k/,K (stop)
+ipa,ipa,ipa,ɫ,ㄹ,/ɫ/,L (liquid)
+ipa,ipa,ipa,m,ㅁ,/m/,M (nasal)
+ipa,ipa,ipa,n,ㄴ,/n/,N (nasal)
+ipa,ipa,ipa,ŋ,ㅇ,/ŋ/,NG (nasal)
+ipa,ipa,ipa,oʊ,오우-,/oʊ/,OW (vowel)
+ipa,ipa,ipa,ɔɪ,오이-,/ɔɪ/,OY (vowel)
+ipa,ipa,ipa,p,프,/p/,P (stop)
+ipa,ipa,ipa,ɹ,미국식 r,/ɹ/,R (liquid)
+ipa,ipa,ipa,s,ㅅ,/s/,S (fricative)
+ipa,ipa,ipa,ʃ,쉬,/ʃ/,SH (fricative)
+ipa,ipa,ipa,t,ㅌ,/t/,T (stop)
+ipa,ipa,ipa,θ,쓰,/θ/,TH (fricative)
+ipa,ipa,ipa,ʊ,우,/ʊ/,UH (vowel)
+ipa,ipa,ipa,u,우-,/u/,UW (vowel)
+ipa,ipa,ipa,v,브,/v/,V (fricative)
+ipa,ipa,ipa,w,워/우,/w/,W (semivowel)
+ipa,ipa,ipa,j,이/야,/j/,Y (semivowel)
+ipa,ipa,ipa,z,즈,/z/,Z (fricative)
+ipa,ipa,ipa,ʒ,쥐,/ʒ/,ZH (fricative)
+학습하기,기본표현(일상),단어,please,플리즈,/pliz/,부탁해요
+학습하기,기본표현(일상),단어,sorry,쏘리,/ˈsɑɹi/,미안해요
+학습하기,기본표현(일상),단어,excuse me,익스큐즈 미,/ɪkˈskjuz mi/,실례합니다
+학습하기,기본표현(일상),단어,help,헬프,/hɛlp/,도와주세요
+학습하기,기본표현(일상),단어,again,어게인,/əˈɡɛn/,다시
+학습하기,기본표현(일상),단어,slowly,슬로울리,/ˈsloʊli/,천천히
+학습하기,기본표현(일상),단어,repeat,리핏,/ɹɪˈpit/,반복하다/다시 말하다
+학습하기,기본표현(일상),단어,understand,언더스탠드,/ˌʌndɚˈstænd/,이해하다
+학습하기,기본표현(일상),단어,right,라잇,/ɹaɪt/,맞는/오른쪽
+학습하기,기본표현(일상),단어,later,레이터,/ˈleɪtɚ/,나중에
+학습하기,기본표현(일상),문장,Could you speak slowly?,쿠드 유 스피크 슬로울리?,/kʊd ju spik ˈsloʊli/,천천히 말해주실 수 있나요?
+학습하기,기본표현(일상),문장,Can you repeat that?,캔 유 리핏 댓?,/kæn ju ɹɪˈpit ðæt/,다시 말해줄래요?
+학습하기,기본표현(일상),문장,I don't understand.,아이 돈트 언더스탠드.,/aɪ doʊnt ˌʌndɚˈstænd/,이해가 안 돼요.
+학습하기,기본표현(일상),문장,"Could you help me, please?","쿠드 유 헬프 미, 플리즈?",/kʊd ju hɛlp mi pliz/,도와주실 수 있나요?
+학습하기,기본표현(일상),문장,"I'm sorry, I’m late.","아임 쏘리, 아임 레이트.",/aɪm ˈsɑɹi aɪm leɪt/,"미안해요, 늦었어요."
+학습하기,기본표현(일상),문장,Please say it again.,플리즈 세이 잇 어게인.,/pliz seɪ ɪt əˈɡɛn/,다시 말해 주세요.
+학습하기,기본표현(일상),문장,What does that mean?,왓 더즈 댓 민?,/wʌt dʌz ðæt min/,그게 무슨 뜻이에요?
+학습하기,기본표현(일상),문장,Could you write it down?,쿠드 유 라잇 잇 다운?,/kʊd ju ɹaɪt ɪt daʊn/,적어주실 수 있나요?
+학습하기,기본표현(일상),문장,Let’s talk later.,렛츠 톡 레이터.,/lɛts tɔk ˈleɪtɚ/,나중에 이야기해요.
+학습하기,기본표현(일상),문장,Is this the right way?,이즈 디스 더 라잇 웨이?,/ɪz ðɪs ðə ɹaɪt weɪ/,이 길이 맞나요?
+학습하기,여행,단어,passport,패스포트,/ˈpæsˌpɔɹt/,여권
+학습하기,여행,단어,ticket,티켓,/ˈtɪkɪt/,표
+학습하기,여행,단어,reservation,레저베이션,/ˌɹɛzɚˈveɪʃən/,예약
+학습하기,여행,단어,luggage,러기지,/ˈlʌɡɪdʒ/,짐
+학습하기,여행,단어,airport,에어포트,/ˈɛɹˌpɔɹt/,공항
+학습하기,여행,단어,map,맵,/mæp/,지도
+학습하기,여행,단어,subway,서브웨이,/ˈsʌbˌweɪ/,지하철
+학습하기,여행,단어,sightseeing,사이트씨잉,/ˈsaɪtˌsiɪŋ/,관광
+학습하기,여행,단어,gate,게이트,/ɡeɪt/,탑승구
+학습하기,여행,단어,boarding pass,보딩 패스,/ˈbɔɹdɪŋ pæs/,탑승권
+학습하기,여행,문장,Where is the airport?,웨어 이즈 디 에어포트?,/wɛɹ ɪz ði ˈɛɹˌpɔɹt/,공항이 어디예요?
+학습하기,여행,문장,I have a reservation.,아이 해브 어 레저베이션.,/aɪ hæv ə ˌɹɛzɚˈveɪʃən/,예약이 있어요.
+학습하기,여행,문장,Where is gate A3?,웨어 이즈 게이트 에이 쓰리?,/wɛɹ ɪz ɡeɪt eɪ θɹi/,A3 탑승구가 어디예요?
+학습하기,여행,문장,May I see your passport?,메이 아이 씨 유어 패스포트?,/meɪ aɪ si jʊɹ ˈpæsˌpɔɹt/,여권을 보여주시겠어요?
+학습하기,여행,문장,How much is a ticket?,하우 머치 이즈 어 티켓?,/haʊ mʌtʃ ɪz ə ˈtɪkɪt/,표가 얼마예요?
+학습하기,여행,문장,Where is the check-in counter?,웨어 이즈 더 체크인 카운터?,/wɛɹ ɪz ðə ˈtʃɛk ɪn ˈkaʊntɚ/,체크인 카운터가 어디예요?
+학습하기,여행,문장,My luggage is heavy.,마이 러기지 이즈 헤비.,/maɪ ˈlʌɡɪdʒ ɪz ˈhɛvi/,제 짐이 무거워요.
+학습하기,여행,문장,How do I get to the station?,하우 두 아이 겟 투 더 스테이션?,/haʊ du aɪ ɡɛt tə ðə ˈsteɪʃən/,역에 어떻게 가요?
+학습하기,여행,문장,Can you show me on the map?,캔 유 쇼 미 온 더 맵?,/kæn ju ʃoʊ mi ɑn ðə mæp/,지도에서 보여주실래요?
+학습하기,여행,문장,I'd like to go sightseeing.,아이드 라익 투 고 사이트씨잉.,/aɪd laɪk tə ɡoʊ ˈsaɪtˌsiɪŋ/,관광하고 싶어요.
+학습하기,음식,단어,menu,메뉴,/ˈmɛnju/,메뉴판
+학습하기,음식,단어,water,워터,/ˈwɔtɚ/,물
+학습하기,음식,단어,tea,티,/ti/,차
+학습하기,음식,단어,bread,브레드,/bɹɛd/,빵
+학습하기,음식,단어,rice,라이스,/ɹaɪs/,밥/쌀
+학습하기,음식,단어,chicken,치킨,/ˈtʃɪkɪn/,닭고기
+학습하기,음식,단어,spicy,스파이시,/ˈspaɪsi/,매운
+학습하기,음식,단어,vegetarian,베지테리언,/ˌvɛdʒəˈtɛɹiən/,채식(주의자)
+학습하기,음식,단어,check,첵,/tʃɛk/,계산서
+학습하기,음식,단어,dessert,디저트,/dɪˈzɝt/,후식
+학습하기,음식,문장,Could I see the menu?,쿠드 아이 씨 더 메뉴?,/kʊd aɪ si ðə ˈmɛnju/,메뉴 좀 볼 수 있을까요?
+학습하기,음식,문장,"I'd like water, please.","아이드 라익 워터, 플리즈.",/aɪd laɪk ˈwɔtɚ pliz/,물 주세요.
+학습하기,음식,문장,"Two teas, please.","투 티즈, 플리즈.",/tu tiz pliz/,차 두 잔 주세요.
+학습하기,음식,문장,Is this dish spicy?,이즈 디스 디쉬 스파이시?,/ɪz ðɪs dɪʃ ˈspaɪsi/,이 요리 매워요?
+학습하기,음식,문장,I'm vegetarian.,아임 베지테리언.,/aɪm ˌvɛdʒəˈtɛɹiən/,저는 채식이에요.
+학습하기,음식,문장,Can I have some bread?,캔 아이 해브 썸 브레드?,/kæn aɪ hæv sʌm bɹɛd/,빵 좀 주실래요?
+학습하기,음식,문장,I want chicken and rice.,아이 원트 치킨 앤 라이스.,/aɪ wɑnt ˈtʃɪkɪn ænd ɹaɪs/,치킨이랑 밥이 먹고 싶어요.
+학습하기,음식,문장,Could you make it less spicy?,쿠드 유 메익 잇 레스 스파이시?,/kʊd ju meɪk ɪt lɛs ˈspaɪsi/,덜 맵게 해주실 수 있나요?
+학습하기,음식,문장,"Can we get the check, please?","캔 위 겟 더 첵, 플리즈?",/kæn wi ɡɛt ðə tʃɛk pliz/,계산서 주세요.
+학습하기,음식,문장,"I'd like dessert, please.","아이드 라익 디저트, 플리즈.",/aɪd laɪk dɪˈzɝt pliz/,후식 주세요.
+학습하기,쇼핑,단어,price,프라이스,/pɹaɪs/,가격
+학습하기,쇼핑,단어,sale,세일,/seɪl/,할인
+학습하기,쇼핑,단어,color,컬러,/ˈkʌlɚ/,색
+학습하기,쇼핑,단어,fitting room,피팅 룸,/ˈfɪtɪŋ ɹum/,탈의실
+학습하기,쇼핑,단어,receipt,리싯,/ɹɪˈsit/,영수증
+학습하기,쇼핑,단어,cash,캐시,/kæʃ/,현금
+학습하기,쇼핑,단어,exchange,익스체인지,/ɪksˈtʃeɪndʒ/,교환
+학습하기,쇼핑,단어,refund,리펀드,/ˈɹiˌfʌnd/,환불
+학습하기,쇼핑,단어,discount,디스카운트,/ˈdɪsˌkaʊnt/,할인
+학습하기,쇼핑,단어,credit card,크레딧 카드,/ˈkɹɛdɪt kɑɹd/,신용카드
+학습하기,쇼핑,문장,How much is this?,하우 머치 이즈 디스?,/haʊ mʌtʃ ɪz ðɪs/,이거 얼마예요?
+학습하기,쇼핑,문장,Is this on sale?,이즈 디스 온 세일?,/ɪz ðɪs ɑn seɪl/,이거 할인 중인가요?
+학습하기,쇼핑,문장,Do you have this in another color?,두 유 해브 디스 인 어나더 컬러?,/du ju hæv ðɪs ɪn əˈnʌðɚ ˈkʌlɚ/,다른 색 있어요?
+학습하기,쇼핑,문장,Can I try it on?,캔 아이 트라이 잇 온?,/kæn aɪ tɹaɪ ɪt ɑn/,입어봐도 될까요?
+학습하기,쇼핑,문장,Where is the fitting room?,웨어 이즈 더 피팅 룸?,/wɛɹ ɪz ðə ˈfɪtɪŋ ɹum/,탈의실이 어디예요?
+학습하기,쇼핑,문장,Do you have any discount?,두 유 해브 애니 디스카운트?,/du ju hæv ˈɛni ˈdɪsˌkaʊnt/,할인 있나요?
+학습하기,쇼핑,문장,I'll pay with a credit card.,아일 페이 위드 어 크레딧 카드.,/aɪl peɪ wɪð ə ˈkɹɛdɪt kɑɹd/,신용카드로 결제할게요.
+학습하기,쇼핑,문장,Can I get a receipt?,캔 아이 겟 어 리싯?,/kæn aɪ ɡɛt ə ɹɪˈsit/,영수증 받을 수 있나요?
+학습하기,쇼핑,문장,I'd like to exchange this.,아이드 라익 투 익스체인지 디스.,/aɪd laɪk tə ɪksˈtʃeɪndʒ ðɪs/,이거 교환하고 싶어요.
+학습하기,쇼핑,문장,Can I get a refund?,캔 아이 겟 어 리펀드?,/kæn aɪ ɡɛt ə ˈɹiˌfʌnd/,환불 가능할까요?
+학습하기,비즈니스 표현,단어,meeting,미팅,/ˈmitɪŋ/,회의
+학습하기,비즈니스 표현,단어,schedule,스케줄,/ˈskɛdʒuɫ/,일정
+학습하기,비즈니스 표현,단어,deadline,데드라인,/ˈdɛdˌlaɪn/,마감일
+학습하기,비즈니스 표현,단어,proposal,프러포절,/pɹəˈpoʊzəl/,제안서
+학습하기,비즈니스 표현,단어,contract,컨트랙트,/ˈkɑnˌtɹækt/,계약
+학습하기,비즈니스 표현,단어,client,클라이언트,/ˈklaɪənt/,고객
+학습하기,비즈니스 표현,단어,invoice,인보이스,/ˈɪnˌvɔɪs/,송장/청구서
+학습하기,비즈니스 표현,단어,budget,버짓,/ˈbʌdʒɪt/,예산
+학습하기,비즈니스 표현,단어,report,리포트,/ɹɪˈpɔɹt/,보고서
+학습하기,비즈니스 표현,단어,update,업데이트,/ʌpˈdeɪt/,진행 상황
+학습하기,비즈니스 표현,문장,Let's schedule a meeting.,렛츠 스케줄 어 미팅.,/lɛts ˈskɛdʒuɫ ə ˈmitɪŋ/,회의 일정을 잡죠.
+학습하기,비즈니스 표현,문장,What's the deadline?,왓츠 더 데드라인?,/wʌts ðə ˈdɛdˌlaɪn/,마감이 언제인가요?
+학습하기,비즈니스 표현,문장,Please send the proposal.,플리즈 센드 더 프러포절.,/pliz sɛnd ðə pɹəˈpoʊzəl/,제안서를 보내주세요.
+학습하기,비즈니스 표현,문장,We need to review the contract.,위 니드 투 리뷰 더 컨트랙트.,/wi nid tə ɹɪˈvju ðə ˈkɑnˌtɹækt/,계약서를 검토해야 해요.
+학습하기,비즈니스 표현,문장,I'll contact the client.,아일 컨택 더 클라이언트.,/aɪl ˈkɑnˌtækt ðə ˈklaɪənt/,고객에게 연락할게요.
+학습하기,비즈니스 표현,문장,Can you send the invoice?,캔 유 센드 디 인보이스?,/kæn ju sɛnd ði ˈɪnˌvɔɪs/,송장 보내주실래요?
+학습하기,비즈니스 표현,문장,Our budget is limited.,아워 버짓 이즈 리미티드.,/aʊɹ ˈbʌdʒɪt ɪz ˈlɪmɪtɪd/,예산이 제한적이에요.
+학습하기,비즈니스 표현,문장,Could you share the report?,쿠드 유 쉐어 더 리포트?,/kʊd ju ʃɛɹ ðə ɹɪˈpɔɹt/,보고서 공유해주실 수 있나요?
+학습하기,비즈니스 표현,문장,Can you give me an update?,캔 유 기브 미 언 업데이트?,/kæn ju ɡɪv mi ən ʌpˈdeɪt/,진행 상황 알려주실래요?
+학습하기,비즈니스 표현,문장,Let's follow up tomorrow.,렛츠 팔로업 투모로우.,/lɛts ˈfɑloʊˌʌp təˈmɑɹoʊ/,내일 후속으로 확인하죠.
